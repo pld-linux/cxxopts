@@ -2,7 +2,7 @@ Summary:	Lightweight C++ command line option parser
 Summary(pl.UTF-8):	Lekki parser opcji linii poleceń dla C++
 Name:		cxxopts
 Version:	3.3.1
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries
 #Source0Download: https://github.com/jarro2783/cxxopts/releases
@@ -45,7 +45,10 @@ wykorzystujących cxxopts.
 %build
 install -d build
 cd build
-%cmake ..
+# .pc file generation expects relative CMAKE_INSTALL_INCLUDEDIR
+%cmake .. \
+	-DCMAKE_INSTALL_INCLUDEDIR=include
+
 %{__make}
 
 %install
